@@ -145,28 +145,45 @@ export default function Sidebar() {
   );
 }
 
-/* ── Bottom tab bar shown only on mobile (5 items — no overflow) ── */
+/* ── Bottom tab bar shown only on mobile ── */
 export function MobileNav() {
   const location = useLocation();
 
   return (
     <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50
-      bg-zinc-950 dark:bg-white border-t border-zinc-800/60 dark:border-slate-200
-      flex items-center justify-around px-2 py-1">
+      bg-zinc-950/95 dark:bg-white/95 backdrop-blur-md
+      border-t border-zinc-800/60 dark:border-slate-200
+      flex items-center justify-around px-3 py-2 pb-safe shadow-2xl">
       {navLinks.map(({ path, label, Icon }) => {
         const active = location.pathname === path;
         return (
           <Link
             key={path}
             to={path}
-            className={`flex flex-col items-center gap-0.5 px-3 py-2 rounded-xl transition-all flex-1 ${
+            className="flex flex-col items-center gap-1 flex-1 group"
+          >
+            {/* Icon pill */}
+            <div className={`flex items-center justify-center w-10 h-8 rounded-xl transition-all duration-200 ${
+              active
+                ? 'bg-blue-600 shadow-lg shadow-blue-900/40 scale-105'
+                : 'bg-transparent group-hover:bg-zinc-800/80 dark:group-hover:bg-slate-100'
+            }`}>
+              <span className={`transition-colors duration-200 ${
+                active
+                  ? 'text-white'
+                  : 'text-zinc-500 group-hover:text-zinc-300 dark:text-slate-400 dark:group-hover:text-slate-700'
+              }`}>
+                <Icon />
+              </span>
+            </div>
+            {/* Label */}
+            <span className={`text-[9px] font-semibold transition-colors duration-200 ${
               active
                 ? 'text-blue-400 dark:text-blue-600'
-                : 'text-zinc-500 dark:text-slate-400'
-            }`}
-          >
-            <Icon />
-            <span className="text-[9px] font-medium">{label}</span>
+                : 'text-zinc-600 dark:text-slate-400 group-hover:text-zinc-400 dark:group-hover:text-slate-600'
+            }`}>
+              {label}
+            </span>
           </Link>
         );
       })}
