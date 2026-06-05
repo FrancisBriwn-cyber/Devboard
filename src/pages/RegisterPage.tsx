@@ -27,7 +27,7 @@ const AVATARS = [
 const INPUT =
   'w-full bg-slate-50 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700/60 rounded-xl px-4 py-3 text-sm text-slate-800 dark:text-white placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition';
 
-git add .git add .const STEPS = [
+const STEPS = [
   { num: 1, label: 'Account' },
   { num: 2, label: 'Personal' },
   { num: 3, label: 'Profile' },
