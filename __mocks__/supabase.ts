@@ -1,0 +1,10 @@
+export const supabase = {
+  auth: {
+    signInWithPassword: jest.fn(),
+    signUp: jest.fn(),
+    signOut: jest.fn(),
+    getSession: jest.fn(),
+    onAuthStateChange: jest.fn(() => ({ data: { subscription: { unsubscribe: jest.fn() } } })),
+  },
+  from: jest.fn(() => ({ select: jest.fn(), insert: jest.fn(), update: jest.fn(), delete: jest.fn(), eq: jest.fn(), order: jest.fn(), single: jest.fn() })),
+};
