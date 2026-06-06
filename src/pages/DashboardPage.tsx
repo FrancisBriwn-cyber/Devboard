@@ -273,7 +273,6 @@ export default function DashboardPage() {
   const rejected     = jobs.filter((j) => j.status === 'Rejected').length;
   const applied      = jobs.filter((j) => j.status === 'Applied').length;
   const responseRate = total > 0 ? Math.round(((interviews + offers + rejected) / total) * 100) : 0;
-  const thisWeek     = jobs.filter((j) => daysSince(j.applied_at) < 7).length;
 
   const alerts     = getAlerts(jobs);
   const weeklyData = getWeeklyChart(jobs);
@@ -313,7 +312,29 @@ export default function DashboardPage() {
 
 
 
-
+      {/* ── Stat Cards ── */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-5">
+        <div className="bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 rounded-2xl p-5">
+          <p className="text-blue-500 dark:text-blue-400 text-xs font-semibold uppercase tracking-wider mb-2">Total Applied</p>
+          <p className="text-blue-700 dark:text-blue-300 text-5xl font-black">{total}</p>
+          <p className="text-blue-400 text-xs mt-2">{jobs.filter((j) => daysSince(j.applied_at) < 7).length} this week</p>
+        </div>
+        <div className="bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20 rounded-2xl p-5">
+          <p className="text-amber-500 dark:text-amber-400 text-xs font-semibold uppercase tracking-wider mb-2">Interviews</p>
+          <p className="text-amber-600 dark:text-amber-300 text-5xl font-black">{interviews}</p>
+          <p className="text-amber-400 text-xs mt-2">{total > 0 ? Math.round((interviews / total) * 100) : 0}% of applications</p>
+        </div>
+        <div className="bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 rounded-2xl p-5">
+          <p className="text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2">Offers</p>
+          <p className="text-emerald-700 dark:text-emerald-300 text-5xl font-black">{offers}</p>
+          <p className="text-emerald-500 text-xs mt-2">{total > 0 ? Math.round((offers / total) * 100) : 0}% success rate</p>
+        </div>
+        <div className="bg-rose-50 dark:bg-rose-500/10 border border-rose-200 dark:border-rose-500/20 rounded-2xl p-5">
+          <p className="text-rose-500 dark:text-rose-400 text-xs font-semibold uppercase tracking-wider mb-2">Rejected</p>
+          <p className="text-rose-600 dark:text-rose-300 text-5xl font-black">{rejected}</p>
+          <p className="text-rose-400 text-xs mt-2">{applied} still awaiting</p>
+        </div>
+      </div>
 
       {/* ── Quick Actions ── */}
       <div className="bg-white dark:bg-zinc-800/50 border border-slate-200 dark:border-zinc-700/50 rounded-2xl px-5 py-4 mb-5">
