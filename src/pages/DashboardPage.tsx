@@ -310,29 +310,10 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* ── Stat Cards ── */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-5">
-        <div className="bg-blue-500/10 border border-blue-500/20 rounded-2xl p-5">
-          <p className="text-blue-400 text-xs font-semibold uppercase tracking-wider mb-2">Total Applied</p>
-          <p className="text-white text-4xl font-black">{total}</p>
-          <p className="text-blue-400/60 text-xs mt-1">{thisWeek} this week</p>
-        </div>
-        <div className="bg-amber-500/10 border border-amber-500/20 rounded-2xl p-5">
-          <p className="text-amber-400 text-xs font-semibold uppercase tracking-wider mb-2">Interviews</p>
-          <p className="text-white text-4xl font-black">{interviews}</p>
-          <p className="text-amber-400/60 text-xs mt-1">{total > 0 ? Math.round((interviews / total) * 100) : 0}% of applications</p>
-        </div>
-        <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-2xl p-5">
-          <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2">Offers</p>
-          <p className="text-white text-4xl font-black">{offers}</p>
-          <p className="text-emerald-400/60 text-xs mt-1">{total > 0 ? Math.round((offers / total) * 100) : 0}% success rate</p>
-        </div>
-        <div className="bg-rose-500/10 border border-rose-500/20 rounded-2xl p-5">
-          <p className="text-rose-400 text-xs font-semibold uppercase tracking-wider mb-2">Rejected</p>
-          <p className="text-white text-4xl font-black">{rejected}</p>
-          <p className="text-rose-400/60 text-xs mt-1">{applied} still awaiting</p>
-        </div>
-      </div>
+
+
+
+
 
       {/* ── Quick Actions ── */}
       <div className="bg-white dark:bg-zinc-800/50 border border-slate-200 dark:border-zinc-700/50 rounded-2xl px-5 py-4 mb-5">
