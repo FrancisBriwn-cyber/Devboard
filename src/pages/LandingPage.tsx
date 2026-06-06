@@ -75,11 +75,11 @@ export default function LandingPage() {
 
           <div className="flex items-center gap-3">
             <Link to="/login"
-              className="text-sm font-medium text-slate-600 hover:text-blue-600 transition px-4 py-2">
+              className="hidden sm:block text-sm font-medium text-slate-600 hover:text-blue-600 transition px-4 py-2">
               Sign In
             </Link>
             <Link to="/register"
-              className="text-sm font-semibold bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg transition shadow-sm">
+              className="text-sm font-semibold bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg transition shadow-sm">
               Get Started
             </Link>
           </div>
