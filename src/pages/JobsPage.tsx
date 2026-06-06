@@ -61,7 +61,7 @@ export default function JobsPage() {
   }, [data, search]);
 
   return (
-    <div className="min-h-full bg-slate-50 dark:bg-zinc-900 px-8 py-8">
+    <div className="min-h-full bg-slate-50 dark:bg-zinc-900 px-4 md:px-8 py-6 md:py-8">
 
       {/* ── Hero Banner ── */}
       <div className="relative bg-gradient-to-br from-slate-900 via-indigo-950 to-purple-950 rounded-2xl px-8 py-8 mb-8 overflow-hidden">

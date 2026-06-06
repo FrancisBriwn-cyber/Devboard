@@ -87,13 +87,13 @@ export default function LandingPage() {
       </header>
 
       {/* ── Hero ── */}
-      <section className="max-w-7xl mx-auto px-6 py-24 flex flex-col lg:flex-row items-center gap-16">
+      <section className="max-w-7xl mx-auto px-6 py-12 lg:py-24 flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
         {/* Left */}
         <div className="flex-1">
           <span className="inline-block text-xs font-semibold text-blue-600 border border-blue-200 bg-blue-50 rounded-full px-4 py-1.5 mb-6 tracking-widest uppercase">
             Developer Career OS
           </span>
-          <h1 className="text-5xl lg:text-6xl font-black text-[#0f172a] leading-[1.08] tracking-tight mb-6">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#0f172a] leading-[1.08] tracking-tight mb-6">
             Your job search,<br />finally organised.
           </h1>
           <p className="text-slate-500 text-lg leading-relaxed max-w-lg mb-8">
@@ -156,7 +156,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── Features ── */}
-      <section id="features" className="bg-slate-50 py-24">
+      <section id="features" className="bg-slate-50 py-12 md:py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-14">
             <span className="text-xs font-semibold text-blue-600 uppercase tracking-widest">What We Offer</span>
@@ -180,11 +180,11 @@ export default function LandingPage() {
       </section>
 
       {/* ── About ── */}
-      <section id="about" className="py-24">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
+      <section id="about" className="py-12 md:py-24">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
 
           {/* Left — visual */}
-          <div className="flex-1 relative">
+          <div className="flex-1 relative w-full">
             <div className="bg-[#0f172a] rounded-2xl overflow-hidden shadow-xl p-6">
               <p className="text-slate-500 text-xs font-mono mb-4">devboard.app/dashboard</p>
               <div className="space-y-3">
@@ -245,7 +245,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── Stats ── */}
-      <section id="stats" className="bg-[#0f172a] py-20">
+      <section id="stats" className="bg-[#0f172a] py-12 md:py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             {STATS.map((s) => (
@@ -259,9 +259,9 @@ export default function LandingPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-24 text-center">
+      <section className="py-14 md:py-24 text-center">
         <div className="max-w-2xl mx-auto px-6">
-          <h2 className="text-4xl font-black text-[#0f172a] mb-4 tracking-tight">Ready to take control of your job search?</h2>
+          <h2 className="text-3xl sm:text-4xl font-black text-[#0f172a] mb-4 tracking-tight">Ready to take control of your job search?</h2>
           <p className="text-slate-500 text-lg mb-8">Join developers who are already managing their careers smarter with DevBoard.</p>
           <Link to="/register"
             className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold px-10 py-4 rounded-xl transition shadow-lg shadow-blue-200 text-base">
