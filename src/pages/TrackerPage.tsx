@@ -138,8 +138,8 @@ export default function TrackerPage() {
           KANBAN BOARD
           ════════════════════════════ */}
       {view === 'kanban' && (
-        <div className="overflow-x-auto pb-4 -mx-1 px-1">
-          <div className="grid grid-cols-4 gap-3 min-w-[680px]">
+        <div className="pb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             {STATUSES.map(status => {
               const cfg = STATUS_CFG[status];
               const colJobs = filtered.filter(j => j.status === status);
@@ -159,7 +159,7 @@ export default function TrackerPage() {
                     {/* Empty state */}
                     {colJobs.length === 0 && (
                       <button onClick={() => openAdd(status)}
-                        className="w-full flex flex-col items-center justify-center gap-2 py-8 rounded-xl border-2 border-dashed border-slate-200 dark:border-zinc-700/60 hover:border-blue-400 dark:hover:border-blue-500/50 hover:bg-blue-50/50 dark:hover:bg-blue-500/5 transition-all group/empty">
+                        className="w-full flex flex-col items-center justify-center gap-2 py-5 sm:py-8 rounded-xl border-2 border-dashed border-slate-200 dark:border-zinc-700/60 hover:border-blue-400 dark:hover:border-blue-500/50 hover:bg-blue-50/50 dark:hover:bg-blue-500/5 transition-all group/empty">
                         <div className={`w-8 h-8 rounded-full flex items-center justify-center opacity-30 group-hover/empty:opacity-60 transition-opacity ${cfg.dot} bg-opacity-20`}
                           style={{ backgroundColor: 'currentColor' }}>
                           <div className={`w-8 h-8 rounded-full ${cfg.dot} opacity-20`} />
@@ -202,7 +202,7 @@ export default function TrackerPage() {
                         {/* Footer */}
                         <div className="flex items-center justify-between">
                           <span className="text-slate-400 dark:text-zinc-600 text-[10px]">{job.applied_at}</span>
-                          <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                          <div className="flex items-center gap-1 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
                             {STATUSES.indexOf(status) > 0 && (
                               <IconBtn onClick={() => moveStatus(job, -1)} title="Move back" hover="hover:bg-slate-200 dark:hover:bg-zinc-600">
                                 <ChevL />
@@ -266,7 +266,7 @@ export default function TrackerPage() {
                     {job.company} · {job.applied_at}{job.notes ? ` · ${job.notes}` : ''}
                   </p>
                 </div>
-                <div className="flex items-center gap-1.5 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="flex items-center gap-1.5 shrink-0 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
                   {job.job_url && (
                     <a href={job.job_url} target="_blank" rel="noopener noreferrer"
                       className="w-7 h-7 rounded-lg bg-slate-100 dark:bg-zinc-700 hover:bg-blue-100 dark:hover:bg-blue-500/20 flex items-center justify-center text-slate-400 hover:text-blue-500 transition">
