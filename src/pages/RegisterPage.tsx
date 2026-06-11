@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 import { useAuthStore } from '../store/authStore';
+import { Boxes } from '@/components/ui/background-boxes';
 
 const AVATARS = [
   'https://api.dicebear.com/7.x/micah/svg?seed=Felix&backgroundColor=b6e3f4',
@@ -199,8 +200,12 @@ export default function RegisterPage() {
       </div>
 
       {/* ── Right form panel ── */}
-      <div className="w-full lg:w-7/12 bg-white dark:bg-zinc-900 overflow-y-auto">
-        <div className="min-h-screen flex items-start justify-center p-8 py-12">
+      <div className="w-full lg:w-7/12 bg-white dark:bg-zinc-900 overflow-y-auto relative">
+        <div className="absolute inset-0 overflow-hidden">
+          <Boxes className="pointer-events-none opacity-60 dark:opacity-50" />
+          <div className="absolute inset-0 bg-white/10 dark:bg-zinc-950/40 backdrop-blur-sm" />
+        </div>
+        <div className="relative min-h-screen flex items-start justify-center p-8 py-12">
           <div className="w-full max-w-lg">
 
             {/* Mobile step pills */}

@@ -15,10 +15,11 @@ import ResetPasswordPage from './pages/ResetPasswordPage';
 import SettingsPage from './pages/SettingsPage';
 import LandingPage from './pages/LandingPage';
 import ParticleEffectPage from './pages/ParticleEffectPage';
+import { ParticleTextEffect } from '@/components/ui/particle-text-effect';
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex h-screen bg-slate-50 dark:bg-zinc-900 overflow-hidden">
+    <div className="flex h-screen overflow-hidden">
       <Sidebar />
       <main className="flex-1 overflow-y-auto pb-16 md:pb-0">
         {children}
@@ -57,44 +58,47 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/reset-password" element={<ResetPasswordPage />} />
-        <Route path="/settings" element={
-          <ProtectedRoute>
-            <Layout><SettingsPage /></Layout>
-          </ProtectedRoute>
-        } />
-        <Route path="/dashboard" element={
-          <ProtectedRoute>
-            <Layout><DashboardPage /></Layout>
-          </ProtectedRoute>
-        } />
-        <Route path="/tracker" element={
-          <ProtectedRoute>
-            <Layout><TrackerPage /></Layout>
-          </ProtectedRoute>
-        } />
-        <Route path="/jobs" element={
-          <ProtectedRoute>
-            <Layout><JobsPage /></Layout>
-          </ProtectedRoute>
-        } />
-        <Route path="/news" element={
-          <ProtectedRoute>
-            <Layout><NewsPage /></Layout>
-          </ProtectedRoute>
-        } />
-        <Route path="/profile" element={
-          <ProtectedRoute>
-            <Layout><ProfilePage /></Layout>
-          </ProtectedRoute>
-        } />
-        <Route path="/particle-effect" element={<ParticleEffectPage />} />
-        <Route path="/" element={<LandingPage />} />
-        <Route path="*" element={<Navigate to="/login" replace />} />
-      </Routes>
+      <div className="relative min-h-screen">
+        <ParticleTextEffect backgroundMode />
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/reset-password" element={<ResetPasswordPage />} />
+          <Route path="/settings" element={
+            <ProtectedRoute>
+              <Layout><SettingsPage /></Layout>
+            </ProtectedRoute>
+          } />
+          <Route path="/dashboard" element={
+            <ProtectedRoute>
+              <Layout><DashboardPage /></Layout>
+            </ProtectedRoute>
+          } />
+          <Route path="/tracker" element={
+            <ProtectedRoute>
+              <Layout><TrackerPage /></Layout>
+            </ProtectedRoute>
+          } />
+          <Route path="/jobs" element={
+            <ProtectedRoute>
+              <Layout><JobsPage /></Layout>
+            </ProtectedRoute>
+          } />
+          <Route path="/news" element={
+            <ProtectedRoute>
+              <Layout><NewsPage /></Layout>
+            </ProtectedRoute>
+          } />
+          <Route path="/profile" element={
+            <ProtectedRoute>
+              <Layout><ProfilePage /></Layout>
+            </ProtectedRoute>
+          } />
+          <Route path="/particle-effect" element={<ParticleEffectPage />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="*" element={<Navigate to="/login" replace />} />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }

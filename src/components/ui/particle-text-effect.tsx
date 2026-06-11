@@ -138,11 +138,16 @@ class Particle {
 interface ParticleTextEffectProps {
   words?: string[]
   particleColor?: "random" | "primary"
+  backgroundMode?: boolean
 }
 
 const DEFAULT_WORDS = ["DevBoard", "Welcome", "Particle Effect", "Light", "Dark"]
 
-export function ParticleTextEffect({ words = DEFAULT_WORDS, particleColor = "random" }: ParticleTextEffectProps) {
+export function ParticleTextEffect({
+  words = DEFAULT_WORDS,
+  particleColor = "random",
+  backgroundMode = false,
+}: ParticleTextEffectProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const animationRef = useRef<number | undefined>(undefined)
   const particlesRef = useRef<Particle[]>([])
@@ -165,7 +170,7 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS, particleColor = "ran
     const observer = new MutationObserver(() => {
       setIsDark(document.documentElement.classList.contains('dark'))
     })
-    
+
     observer.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ['class'],
@@ -348,8 +353,20 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS, particleColor = "ran
     const canvas = canvasRef.current
     if (!canvas) return
 
-    canvas.width = 1000
-    canvas.height = 500
+    const resizeCanvas = () => {
+      if (!canvas) return
+      if (backgroundMode) {
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
+      } else {
+        canvas.width = 1000
+        canvas.height = 500
+      }
+      nextWord(words[wordIndexRef.current], canvas)
+    }
+
+    resizeCanvas()
+    window.addEventListener('resize', resizeCanvas)
 
     // Initialize with first word
     nextWord(words[0], canvas)
@@ -390,32 +407,49 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS, particleColor = "ran
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current)
       }
+      window.removeEventListener('resize', resizeCanvas)
       canvas.removeEventListener("mousedown", handleMouseDown)
       canvas.removeEventListener("mouseup", handleMouseUp)
       canvas.removeEventListener("mousemove", handleMouseMove)
       canvas.removeEventListener("contextmenu", handleContextMenu)
     }
-  }, [words, isDark])
+  }, [words, isDark, backgroundMode])
+
+  const wrapperClasses = backgroundMode
+    ? `absolute inset-0 -z-10 pointer-events-none transition-colors duration-300 ${
+        isDark ? "bg-zinc-950" : "bg-slate-50"
+      }`
+    : `flex flex-col items-center justify-center min-h-screen p-4 transition-colors duration-300 ${
+        isDark ? "bg-zinc-950" : "bg-slate-50"
+      }`
+
+  const canvasClasses = backgroundMode
+    ? "absolute inset-0 w-full h-full"
+    : `border rounded-lg shadow-2xl transition-colors duration-300 ${
+        isDark ? "border-zinc-700 bg-zinc-900" : "border-slate-200 bg-white"
+      }`
+
+  const canvasStyle = backgroundMode
+    ? { width: "100%", height: "100%", display: "block" }
+    : { maxWidth: "100%", height: "auto" }
 
   return (
-    <div className={`flex flex-col items-center justify-center min-h-screen p-4 transition-colors duration-300 ${
-      isDark ? "bg-zinc-950" : "bg-slate-50"
-    }`}>
+    <div className={wrapperClasses}>
       <canvas
         ref={canvasRef}
-        className={`border rounded-lg shadow-2xl transition-colors duration-300 ${
-          isDark ? "border-zinc-700 bg-zinc-900" : "border-slate-200 bg-white"
-        }`}
-        style={{ maxWidth: "100%", height: "auto" }}
+        className={canvasClasses}
+        style={canvasStyle}
       />
-      <div className={`mt-4 text-sm text-center max-w-md transition-colors duration-300 ${
-        isDark ? "text-zinc-200" : "text-slate-900"
-      }`}>
-        <p className="mb-2 font-semibold">Particle Text Effect</p>
-        <p className={`text-xs ${isDark ? "text-zinc-400" : "text-slate-600"}`}>
-          Right-click and hold while moving mouse to destroy particles • Words change automatically every 4 seconds
-        </p>
-      </div>
+      {!backgroundMode && (
+        <div className={`mt-4 text-sm text-center max-w-md transition-colors duration-300 ${
+          isDark ? "text-zinc-200" : "text-slate-900"
+        }`}>
+          <p className="mb-2 font-semibold">Particle Text Effect</p>
+          <p className={`text-xs ${isDark ? "text-zinc-400" : "text-slate-600"}`}>
+            Right-click and hold while moving mouse to destroy particles • Words change automatically every 4 seconds
+          </p>
+        </div>
+      )}
     </div>
   )
 }
