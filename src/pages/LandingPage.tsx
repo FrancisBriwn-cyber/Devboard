@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { ParticleTextEffect } from '@/components/ui/particle-text-effect';
 
 const FEATURES = [
   {
@@ -58,22 +57,20 @@ const CHECKS = [
 
 export default function LandingPage() {
   return (
-    <div className="relative overflow-hidden bg-white/90 dark:bg-zinc-950/95 text-[#0f172a] dark:text-white font-sans">
-      <ParticleTextEffect backgroundMode words={["DevBoard", "Launch", "Career"]} particleColor="primary" />
-      <div className="absolute inset-0 bg-white/60 dark:bg-zinc-950/70 pointer-events-none" />
+    <div className="bg-white text-[#0f172a] font-sans">
 
       {/* ── Navbar ── */}
-      <header className="sticky top-0 z-50 bg-white/85 dark:bg-zinc-950/90 border-b border-slate-200 dark:border-zinc-700">
+      <header className="sticky top-0 z-50 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-black text-sm">D</div>
             <span className="font-bold text-lg text-[#0f172a] tracking-tight">DevBoard</span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600 dark:text-slate-300">
-            <a href="#features" className="hover:text-blue-600 dark:hover:text-blue-400 transition">Features</a>
-            <a href="#about"    className="hover:text-blue-600 dark:hover:text-blue-400 transition">About</a>
-            <a href="#stats"    className="hover:text-blue-600 dark:hover:text-blue-400 transition">Why Us</a>
+          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+            <a href="#features" className="hover:text-blue-600 transition">Features</a>
+            <a href="#about"    className="hover:text-blue-600 transition">About</a>
+            <a href="#stats"    className="hover:text-blue-600 transition">Why Us</a>
           </nav>
 
           <div className="flex items-center gap-3">

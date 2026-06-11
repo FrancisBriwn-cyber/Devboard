@@ -1,6 +1,5 @@
 import { useState, useCallback } from 'react';
 import { useJobTracker } from '../hooks/useJobTracker';
-import { ParticleTextEffect } from '@/components/ui/particle-text-effect';
 import type { NewJob, Job } from '../types';
 
 const STATUSES = ['Applied', 'Interview', 'Offer', 'Rejected'] as const;
@@ -87,9 +86,7 @@ export default function TrackerPage() {
   );
 
   return (
-    <div className="relative min-h-full overflow-hidden bg-slate-50/80 dark:bg-zinc-950/88 px-4 md:px-8 py-6 md:py-8">
-      <ParticleTextEffect backgroundMode words={["Tracker", "Applications", "Flow"]} particleColor="primary" />
-      <div className="absolute inset-0 bg-slate-50/70 dark:bg-zinc-950/70 pointer-events-none" />
+    <div className="min-h-full bg-slate-50 dark:bg-zinc-900 px-4 md:px-8 py-6 md:py-8">
 
       {/* ── Header ── */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">

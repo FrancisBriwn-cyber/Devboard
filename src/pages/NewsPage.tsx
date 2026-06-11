@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useFetch } from '../hooks/useFetch';
-import { ParticleTextEffect } from '@/components/ui/particle-text-effect';
 
 const TAGS = ['react', 'javascript', 'typescript', 'python', 'css', 'node', 'webdev', 'devops'];
 
@@ -87,9 +86,7 @@ export default function NewsPage() {
   const articles = data?.hits ?? [];
 
   return (
-    <div className="relative min-h-full overflow-hidden bg-slate-50/85 dark:bg-zinc-950/88 px-4 md:px-8 py-6 md:py-8">
-      <ParticleTextEffect backgroundMode words={["News", "Tech", "Updates"]} particleColor="primary" />
-      <div className="absolute inset-0 bg-slate-50/70 dark:bg-zinc-950/70 pointer-events-none" />
+    <div className="min-h-full bg-slate-50 dark:bg-zinc-900 px-4 md:px-8 py-6 md:py-8">
       <h1 className="text-slate-800 dark:text-white text-xl font-bold tracking-tight mb-1">Developer News</h1>
       <p className="text-slate-400 dark:text-zinc-500 text-sm mb-6">Top stories from the Hacker News community</p>
 
