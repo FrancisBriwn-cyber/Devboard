@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 import { useAuthStore } from '../store/authStore';
-import { Boxes } from '@/components/ui/background-boxes';
 
 const INPUT = 'w-full bg-transparent border border-zinc-800 rounded-lg px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-zinc-600 transition';
 
@@ -94,12 +93,8 @@ export default function LoginPage() {
       </div>
 
       {/* ── RIGHT ── */}
-      <div className="flex-1 flex items-center justify-center p-8 relative overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
-          <Boxes className="pointer-events-none opacity-60" />
-          <div className="absolute inset-0 bg-slate-950/30 backdrop-blur-sm" />
-        </div>
-        <div className="relative w-full max-w-sm">
+      <div className="flex-1 flex items-center justify-center p-8 relative">
+        <div className="w-full max-w-sm">
 
           {/* Mobile logo */}
           <div className="flex items-center gap-2.5 mb-10 lg:hidden">
