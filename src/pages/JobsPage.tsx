@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import { useFetch } from '../hooks/useFetch';
+import { ParticleTextEffect } from '@/components/ui/particle-text-effect';
 import { MapPinIcon, DollarIcon, SearchIcon } from '../components/Icons';
 
 interface RemotiveJob {
@@ -61,7 +62,9 @@ export default function JobsPage() {
   }, [data, search]);
 
   return (
-    <div className="min-h-full bg-slate-50 dark:bg-zinc-900 px-4 md:px-8 py-6 md:py-8">
+    <div className="relative min-h-full overflow-hidden bg-slate-50/80 dark:bg-zinc-950/85 px-4 md:px-8 py-6 md:py-8">
+      <ParticleTextEffect backgroundMode words={["Jobs", "Remote", "DevBoard"]} particleColor="primary" />
+      <div className="absolute inset-0 bg-slate-50/70 dark:bg-zinc-950/70 pointer-events-none" />
 
       {/* ── Hero Banner ── */}
       <div className="relative bg-gradient-to-br from-slate-900 via-indigo-950 to-purple-950 rounded-2xl px-8 py-8 mb-8 overflow-hidden">

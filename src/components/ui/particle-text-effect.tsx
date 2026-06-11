@@ -202,8 +202,9 @@ export function ParticleTextEffect({
 
   const generateColor = () => {
     if (particleColor === "primary") {
-      // Use primary blue color for dark mode
-      return { r: 59, g: 130, b: 246 } // Blue-500
+      return isDark
+        ? { r: 96, g: 165, b: 250 }
+        : { r: 37, g: 99, b: 235 }
     }
     return {
       r: Math.random() * 255,
@@ -304,8 +305,9 @@ export function ParticleTextEffect({
     const particles = particlesRef.current
 
     // Background with motion blur - adapt to theme
-    const bgAlpha = isDark ? "0.1" : "0.05"
-    ctx.fillStyle = `rgba(0, 0, 0, ${bgAlpha})`
+    const bgAlpha = isDark ? "0.14" : "0.08"
+    const bgColor = isDark ? `rgba(15, 23, 42, ${bgAlpha})` : `rgba(255, 255, 255, ${bgAlpha})`
+    ctx.fillStyle = bgColor
     ctx.fillRect(0, 0, canvas.width, canvas.height)
 
     // Update and draw particles
@@ -417,7 +419,7 @@ export function ParticleTextEffect({
 
   const wrapperClasses = backgroundMode
     ? `absolute inset-0 -z-10 pointer-events-none transition-colors duration-300 ${
-        isDark ? "bg-zinc-950" : "bg-slate-50"
+        isDark ? "bg-zinc-950/60" : "bg-slate-50/50"
       }`
     : `flex flex-col items-center justify-center min-h-screen p-4 transition-colors duration-300 ${
         isDark ? "bg-zinc-950" : "bg-slate-50"

@@ -15,7 +15,6 @@ import ResetPasswordPage from './pages/ResetPasswordPage';
 import SettingsPage from './pages/SettingsPage';
 import LandingPage from './pages/LandingPage';
 import ParticleEffectPage from './pages/ParticleEffectPage';
-import { ParticleTextEffect } from '@/components/ui/particle-text-effect';
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -59,7 +58,6 @@ function App() {
   return (
     <BrowserRouter>
       <div className="relative min-h-screen">
-        <ParticleTextEffect backgroundMode />
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />

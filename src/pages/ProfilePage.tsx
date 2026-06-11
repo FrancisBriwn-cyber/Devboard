@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useFetch } from '../hooks/useFetch';
 import { supabase } from '../lib/supabase';
 import { useAuthStore } from '../store/authStore';
+import { ParticleTextEffect } from '@/components/ui/particle-text-effect';
 
 const AVATARS = [
   'https://api.dicebear.com/7.x/micah/svg?seed=Felix&backgroundColor=b6e3f4',
@@ -231,7 +232,9 @@ export default function ProfilePage() {
   const MailIcon  = () => <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>;
 
   return (
-    <div className="min-h-full bg-slate-100 dark:bg-zinc-900 px-4 md:px-8 py-6 md:py-8">
+    <div className="relative min-h-full overflow-hidden bg-slate-100/80 dark:bg-zinc-950/88 px-4 md:px-8 py-6 md:py-8">
+      <ParticleTextEffect backgroundMode words={["Profile", "DevBoard", "Your Story"]} particleColor="primary" />
+      <div className="absolute inset-0 bg-slate-100/70 dark:bg-zinc-950/70 pointer-events-none" />
       <div className="max-w-5xl mx-auto space-y-6 md:space-y-8">
 
         {/* ── Page header ── */}
