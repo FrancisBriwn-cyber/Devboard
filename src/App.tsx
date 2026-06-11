@@ -14,7 +14,6 @@ import ProfilePage from './pages/ProfilePage';
 import ResetPasswordPage from './pages/ResetPasswordPage';
 import SettingsPage from './pages/SettingsPage';
 import LandingPage from './pages/LandingPage';
-import ParticleEffectPage from './pages/ParticleEffectPage';
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -92,7 +91,7 @@ function App() {
               <Layout><ProfilePage /></Layout>
             </ProtectedRoute>
           } />
-          <Route path="/particle-effect" element={<ParticleEffectPage />} />
+
           <Route path="/" element={<LandingPage />} />
           <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
